@@ -3,7 +3,7 @@ import { json } from "react-router";
 import { useRef, useState, useEffect } from "react";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
-import Register from "./Register";
+
 
 const LOGIN_URL = "/auth";
 export default function Login() {
