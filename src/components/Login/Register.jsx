@@ -1,25 +1,27 @@
-
+import React from "react";
 import { useRef, useState, useEffect } from "react";
-import { Form } from "react-router-dom";
+import {faCheck,faTimes,faInfoCircle,} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGX =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const Register = () => {
+export default function Register() {
   const userRef = useRef();
-  const errREf = useRef();
+  const errRef = useRef();
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(fales);
+  const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setpwd] = useState("");
-  const [validpwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(fales);
+  const [validPwd, setValidPwd] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
 
   const [matchPwd, setMatchPWD] = useState("");
   const [validMatch, setValidMAtch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(fales);
+  const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
@@ -41,6 +43,7 @@ const Register = () => {
     console.log(pwd);
     setValidPwd(result);
     const match = pwd === matchPwd;
+    setValidMAtch(match);
   }, [pwd, matchPwd]);
 
   useEffect(() => {
@@ -71,14 +74,14 @@ const Register = () => {
             {errMsg}
           </p>
           <h1>Register!</h1>
-          <Form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <label htmlFor="username">
               Username:
               <span className={validName ? "valid" : "hide"}>
-                <fontAwesomeIcon icon={faCheck} />{" "}
+                <FontAwesomeIcon icon={faCheck} />{" "}
               </span>
               <span className={validName || !user ? "hide" : "invalid"}>
-                <fontAwesomeIcon icon={faTimes} />{" "}
+                <FontAwesomeIcon icon={faTimes} />{" "}
               </span>
             </label>
             <input
@@ -99,7 +102,7 @@ const Register = () => {
                 userFocus && user && !validName ? "instruction" : "offscreen"
               }
             >
-              <fontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faInfoCircle} />
               4 to 24 Characters.
               <br />
               must begain with a letter.
@@ -110,10 +113,10 @@ const Register = () => {
             <label htmlFor="password">
               Password:
               <span className={validName ? "valid" : "hide"}>
-                <fontAwesomeIcon icon={faCheck} />{" "}
+                <FontAwesomeIcon icon={faCheck} />{" "}
               </span>
               <span className={validName || !user ? "hide" : "invalid"}>
-                <fontAwesomeIcon icon={faTimes} />{" "}
+                <FontAwesomeIcon icon={faTimes} />{" "}
               </span>
             </label>
             <input
@@ -121,7 +124,7 @@ const Register = () => {
               id="password"
               onChange={(e) => setpwd(e.target.value)}
               required
-              aria-invalid={validpwd ? "false" : "true"}
+              aria-invalid={validPwd ? "false" : "true"}
               aria-describedby="pwdnote"
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
@@ -131,7 +134,7 @@ const Register = () => {
               id="pwdnote"
               className={pwdFocus && !validPwd ? "instruction" : "offscreen"}
             >
-              <fontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faInfoCircle} />
               8 to 24 Characters.
               <br />
               Must include uppercase and lowercase letter, a number and a
@@ -148,11 +151,11 @@ const Register = () => {
               Confirm Password:
               <span className={validMatch && matchPwd ? "valid" : "hide"}>
                 {" "}
-                <fontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faCheck} />
               </span>
               <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
                 {" "}
-                <fontAwesomeIcon icon={faTimes} />
+                <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
@@ -171,7 +174,7 @@ const Register = () => {
                 matchFocus && !validMatch ? "instructions" : "offscreen"
               }
             >
-              <fontAwesomeIcon icon={faInfoCircle} /> Must match the first
+              <FontAwesomeIcon icon={faInfoCircle} /> Must match the first
               Password input field.
             </p>
             <button
@@ -179,21 +182,14 @@ const Register = () => {
             >
               Sign Up
             </button>
-          </Form>
+          </form>
           <p>
             Already Registered?
             <br />
-            <span className="line">
-              {/* put router link here
-              <a href="#">Sign in</a> */}
-            </span>
+            <span className="line">{<Link to="/">Login!!</Link>}</span>
           </p>
         </section>
       )}
-      </>
+    </>
   );
-};
-
-export default Register;
-
-
+}
