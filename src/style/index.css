@@ -3,7 +3,7 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  
 }
 input[type=text], select {
   
@@ -29,13 +29,7 @@ input[type=password]:hover {
   background-color: #45a049;
 }
 
-div {
-  
-  width: 400px;
-  border-radius: 20%;
-  background-color: lightblue;
-  padding: 20px;
-}
+
 form{
   width: 300px;
 }
