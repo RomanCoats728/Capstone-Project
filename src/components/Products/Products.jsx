@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 
 
 
+
 const API_URL = 'https://fakestoreapi.com/products'
 
 const Products = () => {

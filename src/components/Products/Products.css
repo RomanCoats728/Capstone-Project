@@ -1,0 +1,33 @@
+
+img{
+    width: 150px;
+    height: 150px;
+    transition: all 0.3s ease;
+}
+img:hover{
+    transform: scale(1.1);
+}
+
+.card{
+    font-size:20px ;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 180px;
+    width: 250px;
+
+}
+
+
+
+  
+
+.product-container{
+    margin-top: 60px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
