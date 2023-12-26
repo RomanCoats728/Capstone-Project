@@ -1,99 +1,89 @@
 .side-menu {
-display: block;
-position: fixed;
-background-color: black;
-width: 300px;
-height: 100%;
-box-sizing: border-box;
-padding: 30px 10px;
+  display: block;
+  position: fixed;
+  background-color: black;
+  width: 300px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 10px;
 }
 .side-menu .top-section .logo{
-  width: 50px;
+  display: none;
+  width: 60px;
   height: 50px;
   overflow: hidden;
   display: inline-block;
 }
-.top-section{
-    position: relative;
+.top-section {
+  position: absolute;
 }
 
-.side-menu .top-section .logo-img{
+.logo-img {
   width: 100px;
   height: 100px;
+}
+.side-menu.inactive {
+  width: 115px;
+}
+
+.toggle-menu-bttn {
+  border: none;
+  background: transparent;
+  font-size: 35px;
+  position: absolute;
+  top: 24%;
+  right: -20px;
+transform: translateY(-50%);
+}
+.Seach-controller input[type="text"] {
+  border: 0;
+  outline: none;
+  height: 35px;
+  background: #333;
+  border-radius: 5px;
+  margin: 20 0%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 40px;
   
 }
- .side-menu.inactive{
-    width: 150px;
-
- }
- 
-
- .side-menu .top-section .toggle-menu-bttn {
-border: none;
-background: transparent;
-font-size: 20px;
-position: absolute;
-top:30%;
-right:0;
-
-transform: translateY(-50%);
-
- 
+.search-Btn {
+  position: absolute;  
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  font-size: 20px;
+  top: 46.3%;
+  transform: translate(-50%);
+  left: 20px;
 }
-.Seach-controller input[type=text]{
-
-border: 0;
-outline: none;
-height: 35px;
-background: #333 ;
-border-radius:5px ;
-margin: 20px 0;
-width: 100%;
-box-sizing: border-box;
-padding: 0 40px;
-
+.side-menu .main-menu {
+    display: non;
 
 }
-.search-btn{
-    width: 40px;
-    height: 40px;
-   position: absolute;
-   background-color: transparent;
-   border: 0;
-   font-size: 20px ;
-   top: 46.3%;
-   transform: translate(-50%);
-   left: 20px;
-
-
+.main-menu .menu-item {
+  color: lightblue;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  display: inline-block;
+  
 }
-.side-menu .main-menu{
-    
-    
+.menu-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
 }
- .side-menu .main-menu .menu-item {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    display: block;
-    display: inline-block;
-    
-   
-
-}
-.side-menu .main-menu .menu-item .menu-icon{
-    display: inline-block;
-    font-size: 20px;
-    line-height: 40px;
-    text-align: center;
-    
-    
-}
-.spacing{
-    position: absolute;
-    border-top: 50px;
-    width: 100%;
-    height: 1px;
-    border-color: #333;
-    background-color: #333;
+.spacing {
+  position: absolute;
+  border-top: 50px;
+  width: 100%;
+  height: 1px;
+  border-color: #333;
+  background-color: #333;
 }

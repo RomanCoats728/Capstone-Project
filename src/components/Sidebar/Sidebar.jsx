@@ -3,7 +3,7 @@ import { useState } from "react";
 import Logo from "../../assets/Logo.png"
 import "./Sidebar.css"
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleLeft, faMagnifyingGlass,faCircleRight, faHome} from "@fortawesome/free-solid-svg-icons";
+import {faCircleLeft, faMagnifyingGlass,faCircleRight, faHome, faSquarePhone,faBook,faFilter} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -20,7 +20,7 @@ const Sidebar = (props) => {
         </button>
         </div>
         <div className="Seach-controller">
-        <button className="search-btn">
+        <button className="search-Btn">
             <FontAwesomeIcon icon={faMagnifyingGlass}  color="lightblue"/>
             </button>
             <input type="text" placeholder="Seach "/>
@@ -33,8 +33,52 @@ const Sidebar = (props) => {
                 <li>
                     <a className="menu-item">
                         <div className="menu-icon">
-                            <FontAwesomeIcon className="icon" icon={faHome} size="xl" color="lightblue"/>
-                       Home </div>
+                            <FontAwesomeIcon className="icon" icon={faHome} size="2x" color="lightblue"/>
+                       </div> 
+                       HOME
+
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div className="main-menu">
+            <ul>
+                <li>
+                    <a className="menu-item">
+                        <div className="menu-icon">
+                            <FontAwesomeIcon className="icon" icon={faFilter} size="2x" color="lightblue"/>
+                       </div> 
+                       HOME
+
+                    </a>
+                </li>
+            </ul>
+
+        </div> <div className="main-menu">
+            <ul>
+                <li>
+                    <a className="menu-item">
+                        <div className="menu-icon">
+                            <FontAwesomeIcon className="icon" icon={faBook} size="2x" color="lightblue"/>
+                       </div> 
+                       About Us
+
+                    </a>
+                </li>
+            </ul>
+
+        </div> <div className="main-menu">
+            <ul>
+                <li>
+                    <a className="menu-item">
+                        <div className="menu-icon">
+                        <FontAwesomeIcon icon={faSquarePhone} size="2x" /><br/>
+                       </div>
+                        Contact Us
+                       
+                      
+
                     </a>
                 </li>
             </ul>
