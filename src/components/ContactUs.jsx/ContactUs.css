@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  background-color: lightblue;
+}
+* {
+  box-sizing: border-box;
+}
+.Contact-Form{
+    
+    margin-top: 300px;
+}
+h1{
+    text-align: center;
+}
+form {
+    
+  display: block;
+  background-color: white;
+  box-shadow: 1px 1px 3px 2px;
+  margin: 40px auto;
+  width: 600px;
+  padding: 20px 40px;
+}
+form input,
+textarea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px auto;
+  padding: 8px;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+}
+span{
+    color: lightblue;
+    padding:8px;
+}
+form button{
+    height: 30px;
+
+}

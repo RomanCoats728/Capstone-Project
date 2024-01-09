@@ -3,6 +3,8 @@ import { json } from "react-router";
 import { useRef, useState, useEffect } from "react";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
+import "./Log.Reg.css"
+
 
 
 
@@ -68,7 +70,7 @@ export default function Login() {
           <h1>Sign In</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username</label>
-            <input
+            <input className="username"
               type="text"
               id="username"
               ref={userRef}
@@ -78,7 +80,7 @@ export default function Login() {
             ></input>
 
             <label htmlFor="password">Password</label>
-            <input
+            <input className="password"
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
@@ -87,7 +89,7 @@ export default function Login() {
             ></input>
             <button type="submit">Sign In</button>
           </form>
-          <p>
+          <p className="notReg">
             {" "}
             Not Register? Sign up !! <br />
             <span className="line">

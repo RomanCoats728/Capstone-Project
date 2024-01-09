@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import {faCheck,faTimes,faInfoCircle,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import "./Log.Reg.css"
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGX =
@@ -147,7 +148,7 @@ export default function Register() {
               <span aria-label="dollar sign">$</span>
               <span aria-label="percent">%</span>
             </p>
-            <label htmlFor="comfirm_pwd">
+            <label htmlFor="confirm_pwd">
               Confirm Password:
               <span className={validMatch && matchPwd ? "valid" : "hide"}>
                 {" "}
@@ -186,7 +187,7 @@ export default function Register() {
           <p>
             Already Registered?
             <br />
-            <span className="line">{<Link to="/">Login!!</Link>}</span>
+            <span className="line">{<Link to="/Login">Login!!</Link>}</span>
           </p>
         </section>
       )}

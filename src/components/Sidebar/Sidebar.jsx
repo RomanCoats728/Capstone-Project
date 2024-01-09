@@ -1,91 +1,71 @@
 import React from "react"
 import { useState } from "react";
+import MenuItem from "./Menuitems.jsx"
 import Logo from "../../assets/Logo.png"
-import "./Sidebar.css"
+import Jewelery from "../Products/Category.jsx";
+
+
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleLeft, faMagnifyingGlass,faCircleRight, faHome, faSquarePhone,faBook,faFilter} from "@fortawesome/free-solid-svg-icons";
+import {faCircleLeft, faMagnifyingGlass,faCircleRight, faHome,faBook,faFilter, faPhone} from "@fortawesome/free-solid-svg-icons";
+import Products from "../Products/AllProducts.jsx";
 
 
-
-
+const menuItem = [
+    {name:'Home', to:`/`, iconClassName: faHome },
+    {name: 'Filter',  
+    subMenus:[{name:"Mens Clothing", to:"/category/men's%20clothing"},{name:"Women Clothing", to:"/category/women's%20clothing"},{name:"Jewelery", to:"/category/jewelery"},{name:'Electronics', to:'/category/electronics'}],iconClassName: faFilter },
+    {name:'About Us', to:`/AboutUs`, iconClassName: faBook},
+    {name: 'Contact Us', to:`/ContactUs`, iconClassName: faPhone }
+]
 const Sidebar = (props) => {
     const [inactive, setInactive] = useState(false)
-    return <div className={`side-menu ${inactive ? "inactive" : ""}`}>
-        <div className="top-section">
-            <div classename="logo"> <img className="logo-img"src={Logo} alt="Logo.png" />
-             </div>
-        <div className="toggle-menu-bttn" > 
-        <button className="toggle-menu-bttn" onClick={()=> {setInactive(!inactive);}}>
-        {inactive ? <FontAwesomeIcon className="icon" icon={faCircleRight} size="1x" color="lightblue"/> :<FontAwesomeIcon className="icon" icon={faCircleLeft} size="1x" color="lightblue" /> }
-        </button>
-        </div>
-        <div className="Seach-controller">
-        <button className="search-Btn">
-            <FontAwesomeIcon icon={faMagnifyingGlass}  color="lightblue"/>
-            </button>
-            <input type="text" placeholder="Seach "/>
+    return (
+        <>
+       
+        <div className={`side-menu ${inactive ? 'inactive' : "" }`}>
+            <div className="top-section">
+                <div className="logo">
+                    <img src={Logo} alt="webscript"/>
+                </div>
+                <div onClick={()=> setInactive(!inactive)}  className="toggle-menu-btn">
+                  {inactive ? <FontAwesomeIcon icon={faCircleRight}/> : <FontAwesomeIcon icon={faCircleLeft}/>}
+                </div>
+            </div>
+            <div className="search-controller">
+                <button className="search-btn">
+                <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                </button>
+                <input type="text" placeholder="Search"/>
+            </div>
+            <div className="divider"></div>
+            <div className="main-menu">
+                <ul>
+                    {
+                        menuItem.map((menuItem, index)=>
+                        (
+                            <MenuItem 
+                            key={index}
+                            name={menuItem.name}
+                            to={menuItem.to}
+                            subMenus={menuItem.subMenus || []}
+                            iconClassName={menuItem.iconClassName}
+                            onClick={()=>{
+                                if(inactive){setInactive(false);}
+                            }}
+                            />
+                        ) )
+                    }
+                  
+                </ul>
+
+            </div>
            
         </div>
-        <div className="spacing"></div>
+        </>
+        
+    )
 
-        <div className="main-menu">
-            <ul>
-                <li>
-                    <a className="menu-item">
-                        <div className="menu-icon">
-                            <FontAwesomeIcon className="icon" icon={faHome} size="2x" color="lightblue"/>
-                       </div> 
-                       HOME
 
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-        <div className="main-menu">
-            <ul>
-                <li>
-                    <a className="menu-item">
-                        <div className="menu-icon">
-                            <FontAwesomeIcon className="icon" icon={faFilter} size="2x" color="lightblue"/>
-                       </div> 
-                       HOME
-
-                    </a>
-                </li>
-            </ul>
-
-        </div> <div className="main-menu">
-            <ul>
-                <li>
-                    <a className="menu-item">
-                        <div className="menu-icon">
-                            <FontAwesomeIcon className="icon" icon={faBook} size="2x" color="lightblue"/>
-                       </div> 
-                       About Us
-
-                    </a>
-                </li>
-            </ul>
-
-        </div> <div className="main-menu">
-            <ul>
-                <li>
-                    <a className="menu-item">
-                        <div className="menu-icon">
-                        <FontAwesomeIcon icon={faSquarePhone} size="2x" /><br/>
-                       </div>
-                        Contact Us
-                       
-                      
-
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
- </div>
 };
 
 export default Sidebar

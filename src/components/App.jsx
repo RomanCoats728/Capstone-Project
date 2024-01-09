@@ -1,33 +1,32 @@
-import "../style/index.css";
-import { Link, Route, Routes } from "react-router-dom";
+
+import { Link, Route, Router, Routes,} from "react-router-dom";
+
 import Register from "./Login/Register";
 import Login from "./Login/Login";
-import Products from "./Products/Products";
+import Products from "./Products/AllProducts";
 import Sidebar from "./Sidebar/Sidebar";
-
-
+import Header from "./Header/Header";
+import SingleProducts from "./Products/SingleProduct";
+import { AboutUs } from "./AboutUs.jsx/AboutUs";
+import { ContactUs } from "./ContactUs.jsx/ContactUS";
+import Category from "./Products/Category";
 
 
 function App() {
- 
   return (
-   
-    <div id="Main">
-      <Sidebar/>
-     
-      <div id="navbar">
-        <Link to="/">Login</Link>
-        <Link to="/Register">Register</Link>
-        <Link to="/Products"> Home</Link>
-      </div>
-      <div id="Main-section">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Products" element={<Products/>}/>
-        </Routes>
-      </div>
-    </div>
+    <>
+
+      <Routes>
+  <Route path="/" element={<Products />} />
+  <Route path="/SingleProducts/:id" element={<SingleProducts/>}/>
+  <Route path="/category/:categoryname" element={<Category/>}/>
+  <Route path="Login" element={<Login/>}/>
+  <Route path="ContactUs" element={<ContactUs/>}/>
+  <Route path="AboutUs" element={<AboutUs/>}/>
+  <Route path="Register" element={<Register/>}/>
+</Routes>
+
+    </>
   );
 }
 
