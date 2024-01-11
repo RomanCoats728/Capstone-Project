@@ -13,6 +13,7 @@ export default function Login() {
   const errRef = useRef();
 
   const [user, setUser] = useState("");
+  const [token,setToken] =useState(localStorage.getItem('userToken') ?? null);
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState("");
