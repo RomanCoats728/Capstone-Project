@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import "./Products.css"
+import "./Products.css";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
+import { Cartcontext } from "../../api";
 
 export default function SingleProducts() {
   const [product, setProduct] = useState({});
+  const [data, setData] = useState([]);
 
   const { id } = useParams();
 
@@ -22,33 +24,38 @@ export default function SingleProducts() {
       console.log(json);
 
       setProduct(json);
+      setData([json]); // Update data state with the fetched product
     } catch (err) {
       console.error(err.message);
     }
   }
 
   console.log(product);
+  const Globalstate = useContext(Cartcontext);
+  const dispatch = Globalstate.dispatch;
+  console.log(Globalstate);
 
   return (
     <>
-    <Header/>
-    <Sidebar/>
-    <div className="cards">
-      {product.id ? (
-        
-        <div className="cards">
-          <img src={product.image} alt="" />
-          <h2>{product.title}</h2>
-          <h6># {product.description}</h6>
-          <h4>Price:${product.price}</h4>
-        </div>
-        
-        
-      ) : (
-        <h1>No Product"{id}". Try again.</h1>
-      )}
-    </div>
+      <Header />
+      <Sidebar />
+      <div className="cards">
+        {data.map((item) => {
+          product.quantity = 1;
+          return(
+
+          <div key={item.id} className="cards">
+            <img src={item.image} alt="" />
+            <h2>{item.title}</h2>
+            <h6># {item.description}</h6>
+            <h4>Price:${item.price}</h4>
+            <button onClick={() => dispatch({ type: "ADD", payload: item })}>
+              Add to Cart
+            </button>
+          </div>
+          );
+        })}
+      </div>
     </>
-    
   );
 }

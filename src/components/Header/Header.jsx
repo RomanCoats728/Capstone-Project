@@ -13,7 +13,7 @@ export default function Header(){
             </div>
             <div className="Links">
             <Link to="/Login">Login</Link>
-
+            <Link to="/Cart">Cart</Link>
                 
             </div>
         
