@@ -1,0 +1,81 @@
+body{
+    background-color: antiquewhite;
+}
+img{
+    width: 200px;
+    height: 200px;
+    transition: all 0.3s ease;
+}
+img:hover{
+    transform: scale(1.1);
+}
+
+.card{
+    font-size:30px ;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    margin-top:0px ;
+    width: 250px;
+    border:3px solid rgb(178, 165, 155);
+    height: 390px;
+    box-shadow: 0px 0px 10px rgb(96, 114, 116);
+    
+    
+    
+    }
+
+    .cards{
+    position: relative;
+    margin-left: 200px;
+    margin: 0 auto;
+    width: 350px;
+    height: 490px;
+    box-shadow: 0px 0px 10px rgb(96, 114, 116);
+    text-align: center;
+    
+    
+        }
+     
+
+button{
+    font-size: 12px;
+    
+    
+   width: 45%;
+   height: 35px;
+   margin: 1px;
+   background-color:rgb(96, 114, 116) ;
+   
+}
+.ButtonContainer{
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-direction:row ;
+    align-items: center;
+    justify-content: space-between 1px;
+    margin-left: 20px;
+   
+    
+}
+  
+
+.product-container{
+    margin-top: 0px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: 300px;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+    
+
+

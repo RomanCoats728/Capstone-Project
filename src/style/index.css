@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
   
+=======
+body{
+  background-color: rgb(250, 238, 209);
+>>>>>>> main
 }
 input[type=text], select {
   
@@ -16,7 +21,11 @@ input[type=text], select {
 }
 
 input[type=username] {
+<<<<<<< HEAD
   background-color: #4CAF50;
+=======
+  background-color: rgb(250, 238, 209);
+>>>>>>> main
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -26,6 +35,7 @@ input[type=username] {
 }
 
 input[type=password]:hover {
+<<<<<<< HEAD
   background-color: #45a049;
 }
 
@@ -33,3 +43,12 @@ input[type=password]:hover {
 form{
   width: 300px;
 }
+=======
+  background-color: #f6f9f7;
+}
+
+/* 
+form{
+  width: 300px;
+} */
+>>>>>>> main
