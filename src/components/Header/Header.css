@@ -1,0 +1,36 @@
+
+.Header {
+    position: fixed;
+    height: 12vh;
+    width: 100%;
+    font-size: 35px;
+    text-align: center;
+    background-color: rgb(178, 165, 155);
+    color: rgb(250, 238, 209);
+    top: 0%;
+    z-index: 1;
+    border-bottom: 1px solid rgb(96, 114, 116);
+    
+  }
+  .Header-Title {
+    
+    display: inline-block;
+    align-items: center;
+    margin: 0 auto;
+    margin-left: 100px;
+   
+  }
+  h1{
+    font-size: 95px;
+  }
+  .Links{
+    display: inline-block;
+    background-color: rgb(112, 5, 5);
+    font-size: 20px;
+    border:1px solid white;
+    position: absolute;
+    margin-left: 280px;
+    margin-top: 20px;
+  
+  }
+  
