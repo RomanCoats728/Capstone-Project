@@ -4,12 +4,14 @@ body {
   font-family: "Times New Roman", Times, serif;
   background-color: lightblue;
 }
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 .Contact-Form{
     
-    margin-top: 300px;
+    margin-top: -20px;
+    background-color: purple;
+    
 }
 h1{
     text-align: center;

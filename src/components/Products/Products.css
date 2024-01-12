@@ -45,6 +45,24 @@ img:hover{
 
 button{
     font-size: 12px;
+    
+    
+   width: 45%;
+   height: 35px;
+   margin: 1px;
+   background-color:rgb(96, 114, 116) ;
+   
+}
+.ButtonContainer{
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-direction:row ;
+    align-items: center;
+    justify-content: space-between 1px;
+    margin-left: 20px;
+   
+    
 }
   
 

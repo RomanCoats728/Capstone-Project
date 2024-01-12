@@ -6,6 +6,8 @@ import Header from "../Header/Header";
 import "./Products.css";
 import "../Sidebar/Sidebar.css";
 import "../Header/Header.css";
+import { useContext } from "react";
+import { Cartcontext } from "../../api";
 
 const Category = (props) => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +31,11 @@ const Category = (props) => {
       .finally(() => setLoading(false));
   }, [location.pathname]);
 
+
+  const Globalstate = useContext(Cartcontext);
+  const dispatch = Globalstate.dispatch;
+  console.log(Globalstate);
+
   return (
     <>
       <Header />
@@ -40,7 +47,9 @@ const Category = (props) => {
             {""} <h1>loading...</h1>
           </div>
         )}
-        {data.map((product) => (
+        {data.map((product) => {
+          product.quantity=1;
+          return (
           <div key={product.id} className="card">
             <div>
               <img src={product.image} alt="" />
@@ -51,9 +60,13 @@ const Category = (props) => {
               <button onClick={() => navigate(`/SingleProducts/${product.id}`)}>
                 Show Details
               </button>
+              <button onClick={() => dispatch({ type: "ADD", payload: product })}>
+                  Add to cart
+                </button>
             </div>
           </div>
-        ))}
+          );
+          })}
       </div>
     </>
   );
