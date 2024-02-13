@@ -24,12 +24,33 @@ h1{
   font-size: 95px;
 }
 .Links{
+  position: absolute;
   display: inline-block;
-  background-color: rgb(112, 5, 5);
+  background-color: rgb(96, 114, 116);
   font-size: 20px;
+  width: 100px;
+ height: 35px;
+ padding-top: 3px;
   border:1px solid white;
   position: absolute;
-  margin-left: 280px;
-  margin-top: 20px;
+  margin-left: 420px;
+  top: 63px;
+  border-radius: 9px;
+  border:none;
+  color: rgb(250, 238, 209);
+
+
+}
+
+
+.log-out-btn{
+  position: absolute;
+  width: 100px;
+  height: 35px;
+  border: none;
+  background-color: rgb(96, 114, 116);
+  margin-left: 550px;
+  top: 60px;
+
 
 }

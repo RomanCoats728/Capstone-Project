@@ -1,13 +1,11 @@
 import React from "react"
 import { useState } from "react";
 import MenuItem from "./Menuitems.jsx"
+import { SearchBar } from "./SearchBar.jsx";
 import Logo from "../../assets/Logo.png"
-import Jewelery from "../Products/Category.jsx";
-
-
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleLeft, faMagnifyingGlass,faCircleRight, faHome,faBook,faFilter, faPhone} from "@fortawesome/free-solid-svg-icons";
-import Products from "../Products/AllProducts.jsx";
+
 
 
 const menuItem = [
@@ -32,10 +30,7 @@ const Sidebar = (props) => {
                 </div>
             </div>
             <div className="search-controller">
-                <button className="search-btn">
-                <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                </button>
-                <input type="text" placeholder="Search"/>
+                <SearchBar/>
             </div>
             <div className="divider"></div>
             <div className="main-menu">

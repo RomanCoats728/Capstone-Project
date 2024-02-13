@@ -1,8 +1,11 @@
-body{
+body {
   background-color: rgb(250, 238, 209);
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
 }
-input[type=text], select {
-  
+input[type="text"],
+select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -11,7 +14,7 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-input[type=username] {
+input[type="username"] {
   background-color: rgb(250, 238, 209);
   color: white;
   padding: 14px 20px;
@@ -21,7 +24,7 @@ input[type=username] {
   cursor: pointer;
 }
 
-input[type=password]:hover {
+input[type="password"]:hover {
   background-color: #f6f9f7;
 }
 

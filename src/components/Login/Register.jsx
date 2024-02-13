@@ -1,68 +1,109 @@
-import React from "react";
-import { useRef, useState, useEffect } from "react";
-import {faCheck,faTimes,faInfoCircle,} from "@fortawesome/free-solid-svg-icons";
+import React, { useRef, useState, useEffect } from "react";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import "./Log.Reg.css"
+import { useNavigate, Link } from "react-router-dom";
+import "./Log.Reg.css";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
-const PWD_REGX =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const password_REGX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export default function Register() {
   const userRef = useRef();
   const errRef = useRef();
-  const [user, setUser] = useState("");
+  const [userName, setUserName] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
-  const [pwd, setpwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
+  const [password, setpassword] = useState("");
+  const [validpassword, setValidpassword] = useState(false);
+  const [passwordFocus, setpasswordFocus] = useState(false);
 
-  const [matchPwd, setMatchPWD] = useState("");
+  const [matchpassword, setMatchpassword] = useState("");
   const [validMatch, setValidMAtch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     userRef.current.focus();
   }, []);
 
   useEffect(() => {
-    const result = USER_REGEX.test(user);
-    console.log(result);
-    console.log(user);
+    const result = USER_REGEX.test(userName);
     setValidName(result);
-  }, [user]);
+  }, [userName]);
 
   useEffect(() => {
-    const result = PWD_REGX.test(pwd);
-    console.log(result);
-    console.log(pwd);
-    setValidPwd(result);
-    const match = pwd === matchPwd;
+    const result = password_REGX.test(password);
+    setValidpassword(result);
+    const match = password === matchpassword;
     setValidMAtch(match);
-  }, [pwd, matchPwd]);
+  }, [password, matchpassword]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, pwd, matchPwd]);
+  }, [userName, password, matchpassword]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user, pwd);
+    console.log("Form Submitted")
     setSuccess(true);
   };
+  useEffect(() => {
+    console.log("validName:", validName);
+  }, [validName]);
+
+  useEffect(() => {
+    console.log("validpassword:", validpassword);
+  }, [validpassword]);
+
+  useEffect(() => {
+    console.log("validMatch:", validMatch);
+  }, [validMatch]);
+
+  const RegHandler = async () => {
+    try {
+      console.log(RegHandler);
+      const response = await fetch("https://fakestoreapi.com/users", {
+        method: "POST",
+        body: JSON.stringify({
+          username: userName,
+          password: password,
+        }),
+      });
+
+      const res = await response.json();
+      console.log(res);
+
+      if (response.ok) {
+        localStorage.setItem(
+          "UserData",
+          JSON.stringify({ username: userName, password: password })
+        );
+        setSuccess(true);
+      } else {
+        setErrMsg("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Registration error:", error.message);
+      setErrMsg("An unexpected error occurred. Please try again.");
+    }
+    console.log("Registration Response:", res);
+  };
+
   return (
     <>
       {success ? (
         <section>
           <h1>Success!</h1>
           <p>
-            <a href="#">Sign In</a>
+            <Link to="/">Sign In!!!</Link>
           </p>
         </section>
       ) : (
@@ -76,21 +117,21 @@ export default function Register() {
           </p>
           <h1>Register!</h1>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">
+            <label htmlFor="userName">
               Username:
               <span className={validName ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />{" "}
               </span>
-              <span className={validName || !user ? "hide" : "invalid"}>
+              <span className={validName || !userName ? "hide" : "invalid"}>
                 <FontAwesomeIcon icon={faTimes} />{" "}
               </span>
             </label>
             <input
               type="text"
-              id="username"
+              id="userName"
               ref={userRef}
               autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
               required
               aria-invalid={validName ? "false" : "true"}
               aria-describedby="uidnote"
@@ -100,7 +141,9 @@ export default function Register() {
             <p
               id="uidnote"
               className={
-                userFocus && user && !validName ? "instruction" : "offscreen"
+                userFocus && userName && !validName
+                  ? "instruction"
+                  : "offscreen"
               }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -113,27 +156,28 @@ export default function Register() {
 
             <label htmlFor="password">
               Password:
-              <span className={validName ? "valid" : "hide"}>
-                <FontAwesomeIcon icon={faCheck} />{" "}
+              <span className={validpassword ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validName || !user ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />{" "}
+              <span className={validpassword || !password ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
               type="password"
               id="password"
-              onChange={(e) => setpwd(e.target.value)}
-              required
-              aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              onFocus={() => setPwdFocus(true)}
-              onBlur={() => setPwdFocus(false)}
+              onChange={(e) => setpassword(e.target.value)}
+              aria-invalid={validMatch ? "false" : "true"}
+              aria-describedby="passwordnote"
+              onFocus={() => setpasswordFocus(true)}
+              onBlur={() => setpasswordFocus(false)}
             />
 
             <p
-              id="pwdnote"
-              className={pwdFocus && !validPwd ? "instruction" : "offscreen"}
+              id="passwordnote"
+              className={
+                passwordFocus && !validpassword ? "instruction" : "offscreen"
+              }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
               8 to 24 Characters.
@@ -141,28 +185,28 @@ export default function Register() {
               Must include uppercase and lowercase letter, a number and a
               special character.
               <br />
-              Allowed special characters:{" "}
+              Allowed special characters:
               <span aria-label="exclamation mark">!</span>
-              <span aria-label=" at Symbol">@</span>{" "}
+              <span aria-label=" at Symbol">@</span>
               <span aria-label="hashtags">#</span>
               <span aria-label="dollar sign">$</span>
               <span aria-label="percent">%</span>
             </p>
-            <label htmlFor="confirm_pwd">
+            <label htmlFor="confirm_password">
               Confirm Password:
-              <span className={validMatch && matchPwd ? "valid" : "hide"}>
-                {" "}
+              <span className={validMatch && matchpassword ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
-                {" "}
+              <span
+                className={validMatch || !matchpassword ? "hide" : "invalid"}
+              >
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
             <input
               type="password"
-              id="confime_pwd"
-              onChange={(e) => setMatchPWD(e.target.value)}
+              id="confirm_password"
+              onChange={(e) => setMatchpassword(e.target.value)}
               required
               aria-invalid={validMatch ? "false" : "true"}
               aria-describedby="confirmnote"
@@ -178,16 +222,14 @@ export default function Register() {
               <FontAwesomeIcon icon={faInfoCircle} /> Must match the first
               Password input field.
             </p>
-            <button
-              disabled={!validName || !validPwd || !validMatch ? true : false}
-            >
+            <button disabled={!validName || !validpassword || !validMatch}>
               Sign Up
             </button>
           </form>
           <p>
             Already Registered?
             <br />
-            <span className="line">{<Link to="/Login">Login!!</Link>}</span>
+            <span className="line">{<Link to="/">Login!!</Link>}</span>
           </p>
         </section>
       )}

@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import "./Products.css";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Sidebar from "../Sidebar/Sidebar";
+import { Link } from "react-router-dom";
 import Header from "../Header/Header.jsx";
-import { Cartcontext } from "../../api/index.jsx";
 
-const Products = ({setToken}) => {
+
+
+const Browser = ({setToken}) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const alertShownBefore = localStorage.getItem("alertShown");
   
 
   useEffect(() => {
@@ -22,19 +25,35 @@ const Products = ({setToken}) => {
       .then((res) => {
         console.log(res.data);
         setData(res.data);
+        alert("While Browsing You Can Not Make Purchases Please Register In Order To Buy!!");
+        localStorage.setItem("alertShown","true")
       })
       .catch((e) => console.log(e))
       .finally(() => setLoading(false));
   }, []);
 
-  const Globalstate = useContext(Cartcontext);
-  const dispatch = Globalstate.dispatch;
-  console.log(Globalstate);
+
 
   return (
+    
     <>
-      <Header setToken={setToken} />
+    
+    <div className="Header">
+        <div className="Header-Title">
+          <h1>Super Store</h1>
+        </div>
+        <div className="Links">
+          <Link to="/Register">
+            Register
+          </Link>
+        </div>
+       <Link className="log-out-btn" to="/">
+        Login
+       </Link>
+      </div>
+     
       <Sidebar />
+      
       <div className="product-container">
         {loading && (
           <div>
@@ -44,7 +63,7 @@ const Products = ({setToken}) => {
         )}
 
         {data.map((product) => {
-          product.quantity = 1;
+          
           return (
             <div key={product.id} className="card">
               <div>
@@ -59,11 +78,7 @@ const Products = ({setToken}) => {
                 >
                   Show Details
                 </button>
-                <button
-                  onClick={() => dispatch({ type: "ADD", payload: product })}
-                >
-                  Add to cart
-                </button>
+            
               </div>
             </div>
           );
@@ -73,4 +88,5 @@ const Products = ({setToken}) => {
   );
 };
 
-export default Products;
+
+export default Browser;

@@ -3,10 +3,10 @@ import "./ContactUS.css"
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
-export function ContactUs (){
+export function ContactUs ({setToken}){
     return(
         <>
-        <Header/>
+        <Header setToken={setToken}/>
         <Sidebar/>
         <div className="Contact-Form">
         <form>
@@ -14,7 +14,7 @@ export function ContactUs (){
             <input type="text" name="name" id="" placeholder="Enter Name"/>
             <input type="email" name="email" id="" placeholder="Example@email.com"/>
             <input type="phone" name="phone" id="" placeholder="(678)-***-****"/>
-            <input type="text" name="name" id=""/>
+            
             <textarea name="message" id="" cols={30} rows={10} placeholder="Enter Question and Concerns Here"/>
             <button type="submit">Submit</button>
 

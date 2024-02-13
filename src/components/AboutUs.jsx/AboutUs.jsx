@@ -4,10 +4,10 @@ import "./AboutUs.css";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
-export function AboutUs() {
+export function AboutUs({setToken}) {
   return (
     <>
-      <Header />
+      <Header setToken={setToken} />
       <Sidebar />
       <div className="Section">
         <div className="Banner">

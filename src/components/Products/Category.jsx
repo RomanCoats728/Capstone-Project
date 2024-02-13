@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from "react";
-import axios from "../../api/axios";
+import axios from "axios";
 import { useNavigate, useParams,useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";

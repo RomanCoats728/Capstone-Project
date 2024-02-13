@@ -7,7 +7,7 @@
   box-sizing: border-box;
   padding: 30px 20px;
   transition: width.2s ease-in ;
-  top: 95px;
+  top: 140px;
 }
 .side-menu.inactive{
   width: 100px;
