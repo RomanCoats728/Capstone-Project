@@ -13,6 +13,10 @@ import Browser from "./Products/Browser";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("userToken") ?? null);
+  var metaTag = document.createElement("meta");
+  metaTag.setAttribute("name", "viewport");
+  metaTag.setAttribute("content", "width=device-width, initial-scale=1");
+  document.head.appendChild(metaTag);
 
   return (
     <div className="App">
