@@ -1,9 +1,10 @@
-body {
-  background-color: rgb(250, 238, 209);
+/* body {
   margin: 0;
-  width: 100vw;
-  height: 100vh;
-}
+  display: flex;
+  place-items: center;
+  min-width: 600px;
+  min-height: 150vh;
+} */
 input[type="text"],
 select {
   padding: 12px 20px;

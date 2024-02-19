@@ -58,6 +58,8 @@ body {
 
 .checkout-popup {
   text-align: center;
+  width: 20%;
+  height: 50%;
 }
 .main {
   background-color: rgb(96, 114, 116);
@@ -86,7 +88,6 @@ body {
 }
 .CF1 {
   margin-top: -65px;
- 
 }
 .close {
   position: absolute;

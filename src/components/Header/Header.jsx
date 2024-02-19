@@ -5,11 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 const Header = ({ setToken }) => {
   const navigate = useNavigate();
-  const logOutHandler = () => {
-    setToken("");
-    localStorage.clear();
-    navigate("/");
-  };
+  
 
   return (
     <div className="Header">
@@ -21,8 +17,8 @@ const Header = ({ setToken }) => {
           <FontAwesomeIcon icon={faCartShopping} size="sm" />
         </Link>
       </div>
-      <button className="log-out-btn" onClick={() => logOutHandler()}>
-        Log Out
+      <button className="log-out-btn" onClick={() =>navigate('/Login')}>
+        Log In
       </button>
     </div>
   );

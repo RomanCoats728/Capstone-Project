@@ -26,8 +26,8 @@ const Login = ({ token, setToken }) => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            username: storedUserData.username,
-            password: storedUserData.password,
+            username: "mor_2314",
+            password: "83r5^_",
           }),
         });
 
@@ -93,9 +93,6 @@ const Login = ({ token, setToken }) => {
           Not Register? <br />
           <span className="line">
             <Link to="/Register">Sign Up!!!</Link>
-          </span>
-          <span className="Browser">
-            <Link to="/Browser">Just-Browsing</Link>
           </span>
         </p>
       </section>
